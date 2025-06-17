@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reproductor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+    }
+    .player {
+      width: 300px;
+      padding: 10px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cover {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .controls img {
+      width: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player">
+    <img class="cover" src="https://upload.wikimedia.org/wikipedia/en/1/1e/Alvaro_de_Luna_-_Todo_Contigo.png" alt="Cover">
+    <audio id="player" loop>
+      <source src="alvaro_todo_contigo.mp3" type="audio/mp3">
+    </audio>
+    <div class="controls" onclick="toggleAudio()">
+      <img id="icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Play">
+    </div>
+  </div>
+
+  <script>
+    let isPlaying = false;
+    const audio = document.getElementById("player");
+    const icon = document.getElementById("icon");
+
+    function toggleAudio() {
+      if (!isPlaying) {
+        audio.play();
+        icon.src = "https://cdn-icons-png.flaticon.com/512/2089/2089610.png";
+      } else {
+        audio.pause();
+        icon.src = "https://cdn-icons-png.flaticon.com/512/727/727245.png";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+
+</body>
+</html>
