@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Avaloro Player</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: transparent;
+    }
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: white;
+    }
+    .circle img {
+      width: 32px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="player" loop>
+    <source src="alvaro_todo_contigo.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="circle" onclick="toggleAudio()">
+    <img id="icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Play">
+  </div>
+
+  <script>
+    let isPlaying = false;
+    const audio = document.getElementById("player");
+    const icon = document.getElementById("icon");
+
+    function toggleAudio() {
+      if (!isPlaying) {
+        audio.play();
+        icon.src = "https://cdn-icons-png.flaticon.com/512/2089/2089610.png"; // pause icon
+      } else {
+        audio.pause();
+        icon.src = "https://cdn-icons-png.flaticon.com/512/727/727245.png"; // play icon
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
