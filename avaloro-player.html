@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Reproductor Avaloro</title>
+<style>
+  body{margin:0;display:flex;justify-content:center;align-items:center;height:100vh}
+  #btn{width:60px;height:60px;border:2px solid #ccc;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;cursor:pointer}
+  #btn img{width:32px;height:32px}
+</style>
+</head><body>
+
+<div id="btn"><img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Play"></div>
+<iframe id="yt" width="0" height="0" style="border:0;" allow="autoplay"></iframe>
+
+<script>
+const YT_ID = "oie3H4ocMCc";
+const SRC   = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&loop=1&playlist=${YT_ID}&enablejsapi=1`;
+let started = false;
+
+document.getElementById('btn').onclick = () => {
+  if (!started) {
+     const yt = document.getElementById('yt');
+     yt.width  = 1;
+     yt.height = 1;
+     yt.src    = SRC;
+     started   = true;
+     setTimeout(()=>{ yt.width=0; yt.height=0; }, 1000);
+  } else {
+     yt.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+  }
+};
+</script>
+</body></html>
